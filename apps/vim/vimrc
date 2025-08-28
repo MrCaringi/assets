@@ -1,0 +1,72 @@
+"
+"   Configuracion inicial basado en el video del atareao:
+"   https://youtu.be/T4770t-chSI
+"
+
+set encoding=utf8
+
+" Set compatibility to Vim only.
+set nocompatible
+
+" For plug-ins to load correctly.
+filetype plugin indent on
+
+" Turn on syntax highlighting.
+syntax on
+
+set autoindent
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+
+set nu
+set rnu
+
+set cursorline
+"set cursorcolumn
+
+set incsearch
+set hlsearch
+
+set splitright
+set splitbelow
+" Install vim-plug if not found
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+"=======================================
+"   Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"   Surround
+Plug 'tpope/vim-surround'
+"   fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+"   Instert/Replace
+Plug 'wincent/terminus'
+"   Auto Completado
+"Plug 'neoclide/coc.nvim'
+"   Python???
+"   Auto compeltado BASH
+Plug 'vim-scripts/bash-support.vim'
+"   Colores
+Plug 'ayu-theme/ayu-vim'
+"   Cerrar parentesis o comillas, etc
+Plug 'dhruvasagar/vim-pairify'
+"=======================================
+call plug#end()
+
+"set nolist
+" Helps force plug-ins to load correctly when it is turned back on below.
+"filetype off
+" Turn off modelines
+"set modelines=0
+
+" Automatically wrap text that extends beyond the screen length.
+set wrap
